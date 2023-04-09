@@ -326,7 +326,7 @@ from t4
 where rnk = 1
 
 --Question 17
---Break down all olympic games where Italy won medal for Rowing and how many medals in each olympic games?
+--Break down all olympic games where India won medal for Hockey and how many medals in each olympic games?
 
 	with t1
 		as	(select team,sport, medal, games
