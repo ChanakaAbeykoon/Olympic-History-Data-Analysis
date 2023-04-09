@@ -5,8 +5,11 @@ Questions Which was created by me.
 
 
 01.find the total no of Olympic Games held as per the dataset?
+
 02.List down all the Olympic Games held so far?
+
 03.Return the Olympic Games which had the highest participating countries and the lowest participating countries?
+
 04.Which nation has participated in all of the olympic games?
 05.Identify the sport which was played in all summer olympics?
 06.Which Sports were just played only once in the olympics?
