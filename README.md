@@ -20,5 +20,5 @@ Questions Which was created by me.
 14.List down total gold, silver and bronze medals won by each country corresponding to each olympic games?
 15.Which countries have never won gold medal but have won silver/bronze medals?
 16.In which Sport/event, Italy has won highest medals?
-17.Break down all olympic games where Italy won medal for Rowing and how many medals in each olympic games?
+17.Break down all olympic games where India won medal for Hockey and how many medals in each olympic games?
 
