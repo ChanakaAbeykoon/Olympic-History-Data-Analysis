@@ -24,18 +24,21 @@ notes varchar(100)
 )
  select count(*)from athlete_events;
  
- --Q 01 find the total no of Olympic Games held as per the dataset.
+ --Question 01 
+ --find the total no of Olympic Games held as per the dataset?
  
 select count(distinct games) as total_olympic_games
 from athlete_events;
 
---Q 02. ist down all the Olympic Games held so far
+--Question 02 
+--List down all the Olympic Games held so far?
 
 select distinct ae.year,ae.season,ae.city
 from athlete_events ae
 order by year;
 
---03. return the Olympic Games which had the highest participating countries and the lowest participating countries.
+--Question 03 
+--Return the Olympic Games which had the highest participating countries and the lowest participating countries?
 
 with all_countries as
               (select games, nr.region
@@ -56,7 +59,8 @@ with all_countries as
       from tot_countries
       order by 1;
  
- --5th question Which nation has participated in all of the olympic games?
+ --Question 04
+ --Which nation has participated in all of the olympic games?
  
  with tot_games
 		 as (select count(distinct games) as total_games
@@ -76,7 +80,8 @@ with all_countries as
     join tot_games tg on 
     tg.total_games = pc.participated
   
---6th question Which nation has participated in all of the olympic games?
+--Question 05
+--Identify the sport which was played in all summer olympics.
 
 with t1 as
           	(select count(distinct games) as total_games
@@ -92,8 +97,8 @@ with t1 as
       from t3
       join t1 on t1.total_games = t3.no_of_games;
       
---7th question
---Which Sports were just played only once in the olympics.
+--Question 06
+--Which Sports were just played only once in the olympics?
 
 with tot_games
 		as (select distinct games, sport
@@ -109,8 +114,8 @@ tg.sport = gc.sport
 where gc.no_of_games = 1;
 
 
---8th question
-Fetch the total no of sports played in each olympic games
+--Question 07
+--Fetch the total no of sports played in each olympic games?
  select* from athlete_events; 
  
  with t1
@@ -123,8 +128,8 @@ Fetch the total no of sports played in each olympic games
 select * from t2
 order by no_of_sports desc;
 
---9th question
-Fetch oldest athletes to win a gold medal
+--Question 08
+--Fetch oldest athletes to win a gold medal?
 with t1 as	
 		(select *
 		from athlete_events
@@ -137,7 +142,9 @@ select *
 from t2
 where rnk = 1;
 
---10th question
+--Question 09
+--Find the Ratio of male and female athletes participated in all olympic games?
+
 select* from athlete_events;
 
 with M
@@ -152,8 +159,8 @@ select male_count/female_count as ratio
 from M 
 join F on F.female_count and M.male_count;
 
---11th question
-Fetch the top 5 athletes who have won the most gold medals.
+--Question 10
+--Fetch the top 5 athletes who have won the most gold medals?
 
 with t1
 	as (select name , team, count(medal) as tot_medal
@@ -169,8 +176,8 @@ select name, team ,tot_medal
 from t2
 where rnk <=5 ;
 
---12th question
---Fetch the top 5 athletes who have won the most medals (gold/silver/bronze)
+--Question 11
+--Fetch the top 5 athletes who have won the most medals (gold/silver/bronze)?
 
 with t1
 		as (select name, team, count(medal) as tot_medal
@@ -187,8 +194,8 @@ where rnk<=5
 order by tot_medal desc;
 
 
---13th question
-Fetch the top 5 most successful countries in olympics. Success is defined by no of medals won.
+--Question 12
+--Fetch the top 5 most successful countries in olympics. Success is defined by no of medals won?
 
 
 with t1
@@ -208,8 +215,8 @@ from t2
 where rnk<=5
 order by rnk;
 
---14th question
-List down total gold, silver and bronze medals won by each country.
+--Question 13
+--List down total gold, silver and bronze medals won by each country?
 
 	with t1 as
 			(select nr.region, medal
@@ -234,8 +241,8 @@ List down total gold, silver and bronze medals won by each country.
     from t3
     group by region
     
---15th question
-List down total gold, silver and bronze medals won by each country corresponding to each olympic games
+--Question 14
+--List down total gold, silver and bronze medals won by each country corresponding to each olympic games?
 
 with t1 as
 			(select games,nr.region, medal
@@ -261,8 +268,8 @@ with t1 as
     group by region, games
     order by games, region 
     
---18th question
-Which countries have never won gold medal but have won silver/bronze medals?
+--Question 15
+--Which countries have never won gold medal but have won silver/bronze medals?
 
 with t1 as
 			(select nr.region, medal
@@ -293,8 +300,8 @@ from t4
 where Gold = 0 and (silver>0 or bronze>0)
 order by silver , bronze
 
---19th question
-In which Sport/event, Italy has won highest medals.
+--Question 16
+--In which Sport/event, Italy has won highest medals?
 
 with t1
 	as  (select sport, medal
@@ -318,8 +325,8 @@ select sport, total_medal
 from t4
 where rnk = 1
 
---20th question
-Break down all olympic games where Italy won medal for Rowing and how many medals in each olympic games
+--Question 17
+--Break down all olympic games where Italy won medal for Rowing and how many medals in each olympic games?
 
 	with t1
 		as	(select team,sport, medal, games
